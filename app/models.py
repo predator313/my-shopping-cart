@@ -22,7 +22,7 @@ CATEGORY_CHOICES=(
     ('M','Mobiles'),
     ('L','Laptops'),
     ('TW','Top Wear'),
-    ('TB','Bottom Wear'),
+    ('BW','Bottom Wear'),
 )
 class Product(models.Model):
     title=models.CharField(max_length=50)
