@@ -7,15 +7,20 @@ from .models import Customer,Product,OrderPlaced,Cart
 class ProductView(View):
     def get(self,request):
         topwears=Product.objects.filter(category='TW')
-        bwears=Product.objects.filter(category='BW')
+        bottomwears=Product.objects.filter(category='BW')
         mobiles=Product.objects.filter(category='M')
         laptops=Product.objects.filter(category='L')
-        return render(request,'app/home.html',{'topwears':topwears,'bwears':bwears,'mobiles':mobiles,'laptops':laptops})
+        return render(request,'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,'mobiles':mobiles,'laptops':laptops})
 
 
 
-def product_detail(request):
- return render(request, 'app/productdetail.html')
+# def product_detail(request):
+#  return render(request, 'app/productdetail.html')
+#changing above to the class based is
+class ProductDetailsView(View):
+    def get(self,request,pk):
+        product=Product.objects.get(pk=pk)
+        return render(request,'app/productdetail.html',{'product':product})
 
 def add_to_cart(request):
  return render(request, 'app/addtocart.html')
