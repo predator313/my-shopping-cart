@@ -9,8 +9,8 @@ class ProductView(View):
         topwears=Product.objects.filter(category='TW')
         bottomwears=Product.objects.filter(category='BW')
         mobile=Product.objects.filter(category='M')
-        laptops=Product.objects.filter(category='L')
-        return render(request,'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,'mobile':mobile,'laptops':laptops})
+        laptop=Product.objects.filter(category='L')
+        return render(request,'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,'mobile':mobile,'laptop':laptop})
 
 
 
@@ -42,14 +42,24 @@ def change_password(request):
 
 def mobile(request,data=None):
     if(data==None):
-        mobiles=Product.objects.filter(category='M')
+        mobile=Product.objects.filter(category='M')
     elif(data=='samsung' or data=='apple' or data=='redmi'):
-        mobiles=Product.objects.filter(category='M').filter(brand=data)
+        mobile=Product.objects.filter(category='M').filter(brand=data)
     elif(data=='below'):
-        mobiles=Product.objects.filter(category='M').filter(discount_price__lt=10000)
+        mobile=Product.objects.filter(category='M').filter(discount_price__lt=10000)
     elif(data=='above'):
-        mobiles=Product.objects.filter(category='M').filter(discount_price__gt=10000)
-    return render(request, 'app/mobile.html',{'mobiles':mobiles})
+        mobile=Product.objects.filter(category='M').filter(discount_price__gt=10000)
+    return render(request, 'app/mobile.html',{'mobile':mobile})
+def laptop(request,data=None):
+    if(data==None):
+        laptop=Product.objects.filter(category='L')
+    elif(data=='acer' or data=='apple'):
+        laptop=Product.objects.filter(category='L').filter(brand=data)
+    elif(data=='below'):
+        laptop=Product.objects.filter(category='M').filter(discount_price__lt=40000)
+    elif(data=='above'):
+        laptop=Product.objects.filter(category='M').filter(discount_price__gt=70000)
+    return render(request, 'app/laptop.html',{'laptop':laptop})
 
 def login(request):
  return render(request, 'app/login.html')
