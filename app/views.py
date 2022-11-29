@@ -8,9 +8,9 @@ class ProductView(View):
     def get(self,request):
         topwears=Product.objects.filter(category='TW')
         bottomwears=Product.objects.filter(category='BW')
-        mobiles=Product.objects.filter(category='M')
+        mobile=Product.objects.filter(category='M')
         laptops=Product.objects.filter(category='L')
-        return render(request,'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,'mobiles':mobiles,'laptops':laptops})
+        return render(request,'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,'mobile':mobile,'laptops':laptops})
 
 
 
@@ -45,6 +45,10 @@ def mobile(request,data=None):
         mobiles=Product.objects.filter(category='M')
     elif(data=='samsung' or data=='apple' or data=='redmi'):
         mobiles=Product.objects.filter(category='M').filter(brand=data)
+    elif(data=='below'):
+        mobiles=Product.objects.filter(category='M').filter(discount_price__lt=10000)
+    elif(data=='above'):
+        mobiles=Product.objects.filter(category='M').filter(discount_price__gt=10000)
     return render(request, 'app/mobile.html',{'mobiles':mobiles})
 
 def login(request):
