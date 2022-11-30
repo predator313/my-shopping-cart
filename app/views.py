@@ -60,6 +60,12 @@ def laptop(request,data=None):
     elif(data=='above'):
         laptop=Product.objects.filter(category='M').filter(discount_price__gt=70000)
     return render(request, 'app/laptop.html',{'laptop':laptop})
+def topwears(request,data=None):
+    if(data==None):
+        topwears=Product.objects.filter(category='TW')
+    elif(data!=None):
+        topwears=Product.objects.filter(category='TW').filter(brand=data)
+    return render(request,'app/topwears.html',{'topwears':topwears})
 
 def login(request):
  return render(request, 'app/login.html')
