@@ -18,6 +18,7 @@ class ProductView(View):
 # def product_detail(request):
 #  return render(request, 'app/productdetail.html')
 #changing above to the class based is
+
 class ProductDetailsView(View):
     def get(self,request,pk):
         product=Product.objects.get(pk=pk)
