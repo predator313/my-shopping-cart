@@ -1,26 +1,26 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Laptop{% endblock title %}
+{% block title %}Bottomwears{% endblock title %}
+{% comment %} here is the bug in the bottom wears section this is not ressolve so i need to spends some time here to fully understand the failing of the bottom wears bottom wears section is not working properly so i gave here the link of the topwears for temporary purpose and i handle this latter {% endcomment %}
 {% block main-content %}
 <div class="container my-5">
  <div class="row">
   <div class="col-sm-3">
     <div class="list-group">
-        <a href="/laptop" class="list-group-item list-group-item-action" aria-current="true">All Laptops</a>
-        <a href="/laptop/acer" class="list-group-item list-group-item-action" aira-current="true" > Acer</a>
-        <a href="/laptop/apple" class="list-group-item list-group-item-action"> Mack</a>
-        <a href="/laptop/Dell" class="list-group-item list-group-item-action"> DEll</a>
+        <a href="/bottomwears" class="list-group-item list-group-item-action">Bottomwears</a>
+        <a href="/topwears/Liverpool" class="list-group-item list-group-item-action" aria-current="true"> Liverpool</a>
+        <a href="/topwears/pentaloon" class="list-group-item list-group-item-action"> Pentaloons</a>
         
     </div>
   </div>
   <div class="col-sm-8 offset-sm-1">
    {% comment %} Mobile Product List {% endcomment %}
    <div class="row">
-    {% for product in laptop %}
+    {% for product in topwears %}
     <div class="col-sm-4 text-center mb-4">
         <a href="{% url 'product-detail' product.id %}" class="btn">
             <div class="item">
-                <img src="{{product.product_image.url}}" alt="" height="250" width="300" class="d-block">
+                <img src="{{product.product_image.url}}" alt="" height="300" class="">
                 <div class="fw-bold">{{product.title}}</div>
                 <div class="fw-bold">Rs. {{product.discount_price}}
                 <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></div>

@@ -55,7 +55,7 @@ def mobile(request,data=None):
 def laptop(request,data=None):
     if(data==None):
         laptop=Product.objects.filter(category='L')
-    elif(data=='acer' or data=='apple'):
+    elif(data=='acer' or data=='apple' or data=='Dell'):
         laptop=Product.objects.filter(category='L').filter(brand=data)
     elif(data=='below'):
         laptop=Product.objects.filter(category='M').filter(discount_price__lt=40000)
@@ -68,6 +68,12 @@ def topwears(request,data=None):
     elif(data!=None):
         topwears=Product.objects.filter(category='TW').filter(brand=data)
     return render(request,'app/topwears.html',{'topwears':topwears})
+def bottomwears(request,data=None):
+    if(data==None):
+        bottomwears=Product.objects.filter(category='BW')
+    elif(data!=None):
+        bottomwears=Product.objects.filter(category='BW').filter(brand=data)
+    return render(request,'app/bottomwears.html',{'bottomwears':bottomwears})
 
 def login(request):
  return render(request, 'app/login.html')
