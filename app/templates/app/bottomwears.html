@@ -8,15 +8,15 @@
   <div class="col-sm-3">
     <div class="list-group">
         <a href="/bottomwears" class="list-group-item list-group-item-action">Bottomwears</a>
-        <a href="/topwears/Liverpool" class="list-group-item list-group-item-action" aria-current="true"> Liverpool</a>
-        <a href="/topwears/pentaloon" class="list-group-item list-group-item-action"> Pentaloons</a>
+        <a href="/bottomwears/trouser" class="list-group-item list-group-item-action" aria-current="true">Trouser</a>
+        <a href="/bottomwears/pentaloon" class="list-group-item list-group-item-action"> Pentaloons</a>
         
     </div>
   </div>
   <div class="col-sm-8 offset-sm-1">
    {% comment %} Mobile Product List {% endcomment %}
    <div class="row">
-    {% for product in topwears %}
+    {% for product in bottomwears %}
     <div class="col-sm-4 text-center mb-4">
         <a href="{% url 'product-detail' product.id %}" class="btn">
             <div class="item">
