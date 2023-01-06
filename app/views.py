@@ -65,7 +65,7 @@ def laptop(request,data=None):
 def topwears(request,data=None):
     if(data==None):
         topwears=Product.objects.filter(category='TW')
-    elif(data=='levis' or data=='footpath'):
+    elif(data=='Shirts' or data=='Tshirt' or data=='FC jersey'):
         topwears=Product.objects.filter(category='TW').filter(brand=data)
     return render(request,'app/topwears.html',{'topwears':topwears})
 def bottomwears(request,data=None):
