@@ -71,7 +71,7 @@ def topwears(request,data=None):
 def bottomwears(request,data=None):
     if(data==None):
         bottomwears=Product.objects.filter(category='BW')
-    elif(data!=None):
+    elif(data=='jeans' or data=='trouser'):
         bottomwears=Product.objects.filter(category='BW').filter(brand=data)
     return render(request,'app/bottomwears.html',{'bottomwears':bottomwears})
 
